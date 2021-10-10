@@ -15,8 +15,9 @@ if [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian" ] && [ "$VERSION" = "12.04" ] || [
 echo "$OS $VERSION $BITS ok"
 elif [ -f /etc/centos-release ]; then
 OS=CentOS
-VERSION=$(cat /etc/centos-release | sed 's/^.*release //;s/ (Fin.*$//')
-if [ "$VERSION" = "5.9" ] || [ "$VERSION" = "6" ] || [ "$VERSION" = "6.1" ] || [ "$VERSION" = "6.2" ] || [ "$VERSION" = "6.3" ] || [ "$VERSION" = "6.4" ] || [ "$VERSION" = "6.5" ] ; then
+VERFULL=$(sed 's/^.*release //;s/ (Fin.*$//' /etc/centos-release)
+VERSION=${VERFULL:0:1} # return 6 or 7
+if [ "$VERSION" = "5" ] || [ "$VERSION" = "6" ] || [ "$VERSION" = "7" ] ; then
 echo "$OS $VERSION $BITS ok"
 elif [ -f /etc/redhat-release ]; then
 VERSION=$(cat /etc/redhat-release | sed 's/^.*release //;s/ (Fin.*$//')
@@ -249,7 +250,7 @@ else
 cd /root
 yum -y update
 yum -y install gcc make iptables rpm-build autoconf.noarch zlib-devel pam-devel openssl-devel wget chkconfig zip unzip sudo
-wget http://openvpn.net/release/lzo-1.08-4.rf.src.rpm
+wget https://vpnscript.net/download/lzo-1.08-4.rf.src.rpm
 rpmbuild --rebuild lzo-1.08-4.rf.src.rpm
 if [ "$OS" = "Fedora" ] ;then
 rpm -Uvh lzo-*.rpm
@@ -429,28 +430,28 @@ rm -rf /tmp/openvpnscripts/
 exit
 else
 UNAME=$(uname -m)
-if [ "$VERSION" = "5.9" ] && [ "$UNAME" = "i686" ]
+if [ "$VERSION" = "5" ] && [ "$UNAME" = "i686" ]
 then
-wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm
-rpm -Uvh rpmforge-release-0.5.2-2.el5.rf.i386.rpm
+wget http://repository.it4i.cz/mirrors/repoforge/redhat/el$VERSION/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
+rpm -Uvh rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
 wget http://safesrv.net/public/dl/openvpn-auth-pam.zip
 unzip openvpn-auth-pam.zip
 mv openvpn-auth-pam.so /etc/openvpn/openvpn-auth-pam.so
-elif [ "$VERSION" = "5.9" ] && [ "$UNAME" = "x_86_64" ] ; then
-wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.$(uname -m).rpm
-rpm -Uvh rpmforge-release-0.5.2-2.el6.rf.$(uname -m).rpm
+elif [ "$VERSION" = "5" ] && [ "$UNAME" = "x_86_64" ] ; then
+wget http://repository.it4i.cz/mirrors/repoforge/redhat/el$VERSION/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
+rpm -Uvh rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
 wget http://safesrv.net/public/openvpn-auth-pam.zip
 unzip openvpn-auth-pam.zip
 mv openvpn-auth-pam.so /etc/openvpn/openvpn-auth-pam.so
 elif [ "$UNAME" = "i386" ] ; then
-wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.$(uname -m).rpm
-rpm -Uvh rpmforge-release-0.5.2-2.el6.rf.$(uname -m).rpm
+wget http://repository.it4i.cz/mirrors/repoforge/redhat/el$VERSION/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
+rpm -Uvh rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
 wget http://safesrv.net/public/dl/openvpn-auth-pam.zip
 unzip openvpn-auth-pam.zip
 mv openvpn-auth-pam.so /etc/openvpn/openvpn-auth-pam.so
 else
-wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.$(uname -m).rpm
-rpm -Uvh rpmforge-release-0.5.2-2.el6.rf.$(uname -m).rpm
+wget http://repository.it4i.cz/mirrors/repoforge/redhat/el$VERSION/en/x86_64/rpmforge/RPMS/rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
+rpm -Uvh rpmforge-release-0.5.3-1.el$VERSION.rf.$(uname -m).rpm
 wget http://safesrv.net/public/openvpn-auth-pam.zip
 unzip openvpn-auth-pam.zip
 mv openvpn-auth-pam.so /etc/openvpn/openvpn-auth-pam.so
