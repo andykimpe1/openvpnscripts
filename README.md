@@ -104,7 +104,7 @@ puis pour installer
 
 then to install
 
-cd /tmp && git clone git://github.com/nicolargo/openvpnscripts.git && dos2unix openvpnscripts/install.sh && chmod +x openvpnscripts/install.sh  && openvpnscripts/install.sh
+cd /tmp && git clone git://github.com/andykimpe/openvpnscripts.git && dos2unix openvpnscripts/install.sh && chmod +x openvpnscripts/install.sh  && openvpnscripts/install.sh
 
 après installation pour crée un client executer ovcreateclient non du client
 
