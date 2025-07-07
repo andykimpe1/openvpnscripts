@@ -88,7 +88,7 @@ cat >> /etc/openvpn/clientconf/$1/client.conf << EOF
 client
 dev tun
 proto $proto
-remote `wget -qO- ifconfig.me/ip` $port
+remote `curl -4 ifconfig.me/ip` $port
 resolv-retry infinite
 cipher AES-256-CBC
 # Cles
