@@ -11,7 +11,7 @@ BITS=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
 if [ -f /etc/lsb-release ]; then
   OS=$(cat /etc/lsb-release | grep DISTRIB_ID | sed 's/^.*=//')
   VERSION=$(cat /etc/lsb-release | grep DISTRIB_RELEASE | sed 's/^.*=//')
-if [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian" ] && [ "$VERSION" = "12.04" ] || [ "$VERSION" = "12.10" ] || [ "$VERSION" = "13.04" ] || [ "$VERSION" = "13.10" ] || [ "$VERSION" = "6" ] || [ "$VERSION" = "7" ] ;then
+if [ "$OS" = "Ubuntu" ] || [ "$OS" = "Debian" ] && [ "$VERSION" = "12.04" ] || [ "$VERSION" = "12.10" ] || [ "$VERSION" = "13.04" ] || [ "$VERSION" = "24.04" ] || [ "$VERSION" = "6" ] || [ "$VERSION" = "7" ] ;then
 echo "$OS $VERSION $BITS ok"
 elif [ -f /etc/centos-release ]; then
 OS=CentOS
@@ -81,7 +81,7 @@ apt-get update
 apt-get -y dist-upgrade
 apt-get -y install openvpn sudo zip unzip
 cd /etc/openvpn
-git clone git://github.com/andykimpe/easy-rsa.git /etc/openvpn/test
+git clone https://github.com/andykimpe1/easy-rsa.git /etc/openvpn/test
 mkdir /etc/openvpn/easy-rsa
 cp -R /etc/openvpn/test/easy-rsa/2.0/* /etc/openvpn/easy-rsa
 rm -rf /etc/openvpn/test
@@ -257,7 +257,7 @@ rpm -Uvh lzo-*.rpm
 rm lzo-*.rpm
 yum install openvpn -y
 cd /etc/openvpn
-git clone git://github.com/andykimpe/easy-rsa.git /etc/openvpn/test
+git clone https://github.com/andykimpe1/easy-rsa.git /etc/openvpn/test
 mkdir /etc/openvpn/easy-rsa
 cp -R /etc/openvpn/test/easy-rsa/2.0/* /etc/openvpn/easy-rsa
 rm -rf /etc/openvpn/test
@@ -460,7 +460,7 @@ rpm -Uvh lzo-*.rpm
 rm lzo-*.rpm
 yum install openvpn -y
 cd /etc/openvpn
-git clone git://github.com/andykimpe/easy-rsa.git /etc/openvpn/test
+git clone git://github.com/andykimpe1/easy-rsa.git /etc/openvpn/test
 mkdir -p /etc/openvpn/easy-rsa/2.0
 cp -R /etc/openvpn/test/easy-rsa/2.0/* /etc/openvpn/easy-rsa/2.0
 rm -rf /etc/openvpn/test
