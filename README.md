@@ -80,31 +80,41 @@ installer les packet git et dos2unix
 
 debian ubuntu attention ce script n'est pas compatible sur ubuntu 12.10 (attention to this script is not compatible ubuntu 12.10)
 
+```
 apt-get -y install git dos2unix 
+```
 
 or (ou)
 
 fedora centos 6 read-hat 6
 
+```
 yum -y install git dos2unix 
+```
 
 ou (or) pour (for) 
 
 centos 5 64bit red-aht 5 64 bit
 
+```
 yum -y install dos2unix zlib-devel openssl-devel cpio expat-devel gettext-devel gcc make automake && wget http://git-core.googlecode.com/files/git-1.7.9.tar.gz && tar xvzf git-1.7.9.tar.gz && cd git-1.7.9 && ./configure && make && make install 
+```
 
 ou (or) pour (for) 
 
 centos 5 32 bit red-aht 5 bit
 
+```
 wget http://mirror.centos.org/centos/5/updates/i386/RPMS/kernel-headers-2.6.18-348.1.1.el5.i386.rpm && rpm -i kernel-headers-2.6.18-348.1.1.el5.i386.rpm && yum -y update && yum -y install dos2unix zlib-devel openssl-devel cpio expat-devel gettext-devel gcc make automake && wget http://git-core.googlecode.com/files/git-1.7.9.tar.gz && tar xvzf git-1.7.9.tar.gz && cd git-1.7.9 && ./configure && make && make install
+```
 
 puis pour installer
 
 then to install
 
-cd /tmp && git clone git://github.com/andykimpe/openvpnscripts.git && dos2unix openvpnscripts/install.sh && chmod +x openvpnscripts/install.sh  && openvpnscripts/install.sh
+```
+cd /tmp && git clone https://github.com/andykimpe1/openvpnscripts.git && dos2unix openvpnscripts/install.sh && chmod +x openvpnscripts/install.sh  && openvpnscripts/install.sh
+```
 
 après installation pour crée un client executer ovcreateclient non du client
 
